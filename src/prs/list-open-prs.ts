@@ -11,20 +11,19 @@ export async function listOpenPRs(
 ): Promise<Octokit.SearchIssuesAndPullRequestsResponseItemsItem[]> {
   const prs: unknown[] = [];
   let page = 1;
-  let areResultsIncomplete = true;
+  let totalCount = 0;
 
-  while (areResultsIncomplete) {
+  do {
     const data = await search({
       page,
       q: `is:open is:pr archived:false user:${params.owner} ${params.searchText || ''}`.trim()
     });
 
-    areResultsIncomplete = data.incomplete_results;
-
-    prs.concat(data.items);
+    totalCount = data.total_count;
+    prs.push(...data.items);
 
     page++;
-  }
+  } while (prs.length < totalCount);
 
   return prs as Octokit.SearchIssuesAndPullRequestsResponseItemsItem[];
 }
