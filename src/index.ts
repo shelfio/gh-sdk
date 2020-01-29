@@ -21,3 +21,16 @@ export async function approvePR(
 
   return data;
 }
+
+export async function mergePR(params: ApprovePRParams): Promise<Octokit.PullsMergeResponse> {
+  const gh = getClient();
+
+  const {data} = await gh.pulls.merge({
+    repo: params.repo,
+    pull_number: params.pr,
+    owner: params.owner,
+    merge_method: 'merge'
+  });
+
+  return data;
+}
