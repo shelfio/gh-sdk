@@ -1,15 +1,21 @@
 jest.mock('./rest-client');
 
 import {getClient} from './rest-client';
-import {approvePR, mergePR} from './index';
+import {approvePR, getUserOrgs, mergePR} from './index';
 
 const createReviewMock = jest.fn().mockResolvedValue({data: {a: 1}});
 const mergeMock = jest.fn().mockResolvedValue({data: {a: 1}});
+const listForAuthenticatedUserMock = jest
+  .fn()
+  .mockResolvedValue({data: [{login: 'hello'}, {login: 'world'}]});
 
 (getClient as jest.Mock).mockReturnValue({
   pulls: {
     createReview: createReviewMock,
     merge: mergeMock
+  },
+  orgs: {
+    listForAuthenticatedUser: listForAuthenticatedUserMock
   }
 });
 
@@ -48,5 +54,19 @@ describe('mergePR', () => {
     const resp = await mergePR({owner: 'shelfio', repo: 'test', pr: 3});
 
     expect(resp).toEqual({a: 1});
+  });
+});
+
+describe('getUserOrgs', () => {
+  it('should call proper sdk method', async () => {
+    await getUserOrgs();
+
+    expect(listForAuthenticatedUserMock).toHaveBeenCalled();
+  });
+
+  it('should respond w/ sdk response', async () => {
+    const resp = await getUserOrgs();
+
+    expect(resp).toEqual(['hello', 'world']);
   });
 });

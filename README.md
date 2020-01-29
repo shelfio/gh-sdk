@@ -11,11 +11,12 @@ $ yarn add @shelf/gh-sdk
 ## Usage
 
 ```js
-const {approvePR, mergePR, listOpenPRs} = require('@shelf/gh-sdk');
+const {approvePR, mergePR, listOpenPRs, getUserOrgs} = require('@shelf/gh-sdk');
 
 approvePR({owner: 'shelf', repo: 'api', pr: 3});
 mergePR({owner: 'shelf', repo: 'api', pr: 3});
 listOpenPRs({owner: 'shelf', searchText: 'renovate'});
+getUserOrgs();
 ```
 
 ## License
