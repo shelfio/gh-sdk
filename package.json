@@ -43,7 +43,9 @@
   "jest": {
     "testEnvironment": "node"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@octokit/rest": "16.40.1"
+  },
   "devDependencies": {
     "@babel/cli": "7.8.3",
     "@babel/core": "7.8.3",
