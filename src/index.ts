@@ -2,6 +2,7 @@ import Octokit from '@octokit/rest';
 import {getClient} from './rest-client';
 
 export {listOpenPRs} from './prs/list-open-prs';
+export {listOrgRepos} from './repos/list-org-repos';
 
 interface ApprovePRParams {
   owner: string;
