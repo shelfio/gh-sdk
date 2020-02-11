@@ -1,4 +1,4 @@
-import Octokit from '@octokit/rest';
+import {Octokit} from '@octokit/rest';
 import {getClient} from './rest-client';
 
 export {listOpenPRs} from './prs/list-open-prs';

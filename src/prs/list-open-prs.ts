@@ -1,4 +1,4 @@
-import Octokit from '@octokit/rest';
+import {Octokit} from '@octokit/rest';
 import {getClient} from '../rest-client';
 
 interface ListPRsParams {

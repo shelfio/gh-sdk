@@ -1,13 +1,13 @@
-import Oktokit from '@octokit/rest';
+import {Octokit} from '@octokit/rest';
 
 let client;
 
-export function getClient(): Oktokit {
+export function getClient(): Octokit {
   if (client) {
     return client;
   }
 
-  client = new Oktokit({
+  client = new Octokit({
     auth: process.env.GITHUB_TOKEN
   });
 

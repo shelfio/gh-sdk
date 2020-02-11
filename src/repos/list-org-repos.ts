@@ -1,7 +1,7 @@
-import {ReposListForOrgResponseItem} from '@octokit/rest';
+import {Octokit} from '@octokit/rest';
 import {getClient} from '../rest-client';
 
-export async function listOrgRepos(org: string): Promise<ReposListForOrgResponseItem[]> {
+export async function listOrgRepos(org: string): Promise<Octokit.ReposListForOrgResponseItem[]> {
   let page = 1;
   let hasMore = false;
 
@@ -16,10 +16,10 @@ export async function listOrgRepos(org: string): Promise<ReposListForOrgResponse
     repos.push(...data);
   } while (hasMore);
 
-  return repos as ReposListForOrgResponseItem[];
+  return repos as Octokit.ReposListForOrgResponseItem[];
 }
 
-async function list(org: string, page: number): Promise<ReposListForOrgResponseItem[]> {
+async function list(org: string, page: number): Promise<Octokit.ReposListForOrgResponseItem[]> {
   const gh = getClient();
   const {data} = await gh.repos.listForOrg({
     org,
