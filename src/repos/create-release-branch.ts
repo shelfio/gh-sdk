@@ -5,12 +5,12 @@ export async function createReleaseBranch({
   owner,
   repo,
   version,
-  commitHash
+  sha
 }: {
   owner: string;
   repo: string;
   version: string;
-  commitHash: string;
+  sha: string;
 }): Promise<Octokit.GitCreateRefResponse> {
   const gh = getClient();
   const branchName = `release/v${version}`;
@@ -19,7 +19,7 @@ export async function createReleaseBranch({
     owner,
     repo,
     ref: branchName,
-    sha: commitHash
+    sha
   });
 
   return data;
