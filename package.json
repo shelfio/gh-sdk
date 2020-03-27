@@ -40,6 +40,7 @@
       "git add"
     ]
   },
+  "prettier": "@shelf/prettier-config",
   "jest": {
     "testEnvironment": "node"
   },
@@ -53,6 +54,7 @@
     "@babel/preset-env": "7.9.0",
     "@babel/preset-typescript": "7.9.0",
     "@shelf/eslint-config": "0.14.2",
+    "@shelf/prettier-config": "0.0.7",
     "@types/jest": "25.1.4",
     "@types/node": "12.12.31",
     "babel-jest": "25.2.3",
@@ -60,7 +62,7 @@
     "husky": "4.2.3",
     "jest": "25.2.3",
     "lint-staged": "10.0.9",
-    "prettier": "1.19.1",
+    "prettier": "2.0.2",
     "typescript": "3.8.3"
   },
   "engines": {
