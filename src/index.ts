@@ -3,6 +3,15 @@ import {getClient} from './rest-client';
 
 export {listOpenPRs} from './prs/list-open-prs';
 export {listOrgRepos} from './repos/list-org-repos';
+export {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './repos/get-repo-branches';
+export {deleteBranch} from './repos/delete-branch';
+export {createReleasePR} from './prs/create-release-pr';
+export {createReleaseBranch} from './repos/create-release-branch';
+export {
+  getLatestBranchCommit,
+  getLatestDevelopCommit,
+  getLatestDevelopCommitSHA
+} from './repos/get-latest-branch-commit';
 
 interface ApprovePRParams {
   owner: string;
