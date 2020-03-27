@@ -29,6 +29,13 @@ getLatestDevelopCommit({owner: 'shelf', repo: 'api'})      //{branch: 'develop} 
 getLatestDevelopCommitSHA({owner: 'shelf', repo: 'api'})   // => 'develop-branch-hash-string'
 ```
 
+## Publish
+
+```sh
+$ yarn version
+$ yarn publish
+```
+
 ## License
 
 MIT © [Shelf](https://shelf.io)
