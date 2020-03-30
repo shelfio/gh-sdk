@@ -22,7 +22,7 @@ getRepoBranch({owner: 'shelf', repo: 'api', branch: 'dev'});
 getRepoBranches({owner: 'shelf', repo: 'api'});            // => [, {branch}]
 getRepoBranchesNames({owner: 'shelf', repo: 'api'});       // => [, 'branch-ref']
 deleteBranch({owner: 'shelf', repo: 'api', ref: 'dev'});
-createReleaseBranch({owner:'shelf', repo: 'api', version: '1.2.3', sha: 'dev'})  // => ref 'release/v1.2.3`
+createReleaseBranch({owner:'shelf', repo: 'api', version: '1.2.3', sha: 'dev'})  // => ref 'refs/heads/release/v1.2.3` (refs/heads - for git link)
 createReleasePR({owner:'shelf', repo: 'api', version: '1.2.3', releaseTitle: 'Good stuff'})  //=> ref: 'release/v1.2.3`, title: Release v1.2.3: Good stuff
 getLatestBranchCommit({owner: 'shelf', repo: 'api', branch: 'dev'});
 getLatestDevelopCommit({owner: 'shelf', repo: 'api'})      //{branch: 'develop} as default
