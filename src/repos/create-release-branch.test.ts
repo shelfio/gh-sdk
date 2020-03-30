@@ -15,7 +15,7 @@ const releaseBranch = {
     type: 'branch',
     url: 'some-url'
   },
-  ref: `release/v${version}`,
+  ref: `refs/heads/release/v${version}`,
   url: 'some-url'
 };
 
@@ -38,7 +38,7 @@ it('git.createRef should be called with correct parameters', async () => {
     owner,
     repo,
     sha,
-    ref: `release/v${version}`
+    ref: `refs/heads/release/v${version}`
   });
 });
 

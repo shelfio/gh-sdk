@@ -13,7 +13,7 @@ export async function createReleaseBranch({
   sha: string;
 }): Promise<Octokit.GitCreateRefResponse> {
   const gh = getClient();
-  const branchName = `release/v${version}`;
+  const branchName = `refs/heads/release/v${version}`;
 
   const {data} = await gh.git.createRef({
     owner,
