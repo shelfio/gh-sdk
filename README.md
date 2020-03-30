@@ -32,8 +32,10 @@ getLatestDevelopCommitSHA({owner: 'shelf', repo: 'api'})   // => 'develop-branch
 ## Publish
 
 ```sh
+$ git checkout master
 $ yarn version
 $ yarn publish
+$ git push origin master
 ```
 
 ## License
