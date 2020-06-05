@@ -45,7 +45,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "@octokit/rest": "16.43.1",
+    "@octokit/rest": "17.10.0",
     "lodash": "4.17.15"
   },
   "devDependencies": {
