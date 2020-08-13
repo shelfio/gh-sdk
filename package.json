@@ -53,7 +53,7 @@
     "@babel/core": "7.9.6",
     "@babel/preset-env": "7.9.6",
     "@babel/preset-typescript": "7.9.0",
-    "@shelf/eslint-config": "0.16.0",
+    "@shelf/eslint-config": "0.19.0",
     "@shelf/prettier-config": "0.0.7",
     "@types/jest": "26.0.9",
     "@types/node": "12.12.31",
