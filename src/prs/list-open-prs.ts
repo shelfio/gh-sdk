@@ -35,6 +35,11 @@ async function search({
   q: string;
   page: number;
 }): Promise<Octokit.SearchIssuesAndPullRequestsResponse> {
+  // Because HttpError: Only the first 1000 search results are available
+  if (page >= 11) {
+    return {incomplete_results: false, items: [], total_count: 0};
+  }
+
   const gh = getClient();
 
   const {data} = await gh.search.issuesAndPullRequests({
