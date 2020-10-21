@@ -10,6 +10,7 @@ export {listOrgRepos} from './repos/list-org-repos';
 export {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './repos/get-repo-branches';
 export {deleteBranch} from './repos/delete-branch';
 export {createReleasePR} from './prs/create-release-pr';
+export {getPR} from './prs/get-pr';
 export {createReleaseBranch} from './repos/create-release-branch';
 export {
   getLatestBranchCommit,
