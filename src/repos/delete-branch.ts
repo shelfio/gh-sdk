@@ -1,11 +1,12 @@
-import {Octokit} from '@octokit/rest';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
+import {OctokitResponse} from '@octokit/types';
 import {getClient} from '../rest-client';
 
 export async function deleteBranch({
   owner,
   repo,
   ref
-}: Octokit.GitDeleteRefParams): Promise<Octokit.AnyResponse> {
+}: RestEndpointMethodTypes['git']['deleteRef']['parameters']): Promise<OctokitResponse<any>> {
   const gh = getClient();
 
   try {

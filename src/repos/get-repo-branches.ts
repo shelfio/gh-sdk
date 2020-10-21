@@ -1,13 +1,15 @@
 import {map} from 'lodash';
-import path from 'path';
-import {Octokit} from '@octokit/rest';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
+import {ReposGetBranchResponseData, ReposListBranchesResponseData} from '@octokit/types';
 import {getClient} from '../rest-client';
 
 export async function getRepoBranch({
   owner,
   repo,
   branch
-}: Octokit.ReposGetBranchParams): Promise<Octokit.ReposGetBranchResponse> {
+}: RestEndpointMethodTypes['repos']['getBranch']['parameters']): Promise<
+  ReposGetBranchResponseData
+> {
   const gh = getClient();
   const branchResponse = await gh.repos.getBranch({
     owner,
@@ -21,7 +23,9 @@ export async function getRepoBranch({
 export async function getRepoBranches({
   owner,
   repo
-}: Octokit.ReposListBranchesParams): Promise<Octokit.ReposListBranchesResponse> {
+}: RestEndpointMethodTypes['repos']['listBranches']['parameters']): Promise<
+  ReposListBranchesResponseData
+> {
   const gh = getClient();
 
   const branchesResponse = await gh.repos.listBranches({

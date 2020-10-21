@@ -1,5 +1,4 @@
 import {get} from 'lodash';
-import {Octokit} from '@octokit/rest';
 import {getRepoBranch} from './get-repo-branches';
 
 type LatestBranchCommit = {
@@ -24,14 +23,14 @@ type LatestBranchCommit = {
   node_id: string;
   sha: string;
   url: string;
-  commit?: object;
+  commit?: Record<string, unknown>;
 };
 
 export async function getLatestBranchCommit({
   owner,
   repo,
   branch
-}: Octokit.ReposGetBranchParams): Promise<LatestBranchCommit> {
+}: Parameters<typeof getRepoBranch>[0]): Promise<LatestBranchCommit> {
   const branchResponse = await getRepoBranch({
     owner,
     repo,

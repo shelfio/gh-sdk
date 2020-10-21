@@ -1,4 +1,4 @@
-import {Octokit} from '@octokit/rest';
+import {GitCreateRefResponseData} from '@octokit/types';
 import {getClient} from '../rest-client';
 
 export async function createReleaseBranch({
@@ -11,7 +11,7 @@ export async function createReleaseBranch({
   repo: string;
   version: string;
   sha: string;
-}): Promise<Octokit.GitCreateRefResponse> {
+}): Promise<GitCreateRefResponseData> {
   const gh = getClient();
   const branchName = `refs/heads/release/v${version}`;
 

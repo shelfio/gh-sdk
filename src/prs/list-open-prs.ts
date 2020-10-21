@@ -1,4 +1,4 @@
-import {Octokit} from '@octokit/rest';
+import {SearchIssuesAndPullRequestsResponseData} from '@octokit/types';
 import {getClient} from '../rest-client';
 
 interface ListPRsParams {
@@ -8,7 +8,7 @@ interface ListPRsParams {
 
 export async function listOpenPRs(
   params: ListPRsParams
-): Promise<Octokit.SearchIssuesAndPullRequestsResponseItemsItem[]> {
+): Promise<SearchIssuesAndPullRequestsResponseData['items']> {
   const prs: unknown[] = [];
   let page = 1;
   let totalCount = 0;
@@ -25,7 +25,7 @@ export async function listOpenPRs(
     page++;
   } while (prs.length < totalCount);
 
-  return prs as Octokit.SearchIssuesAndPullRequestsResponseItemsItem[];
+  return prs as SearchIssuesAndPullRequestsResponseData['items'];
 }
 
 async function search({
@@ -34,7 +34,7 @@ async function search({
 }: {
   q: string;
   page: number;
-}): Promise<Octokit.SearchIssuesAndPullRequestsResponse> {
+}): Promise<SearchIssuesAndPullRequestsResponseData> {
   // Because HttpError: Only the first 1000 search results are available
   if (page >= 11) {
     return {incomplete_results: false, items: [], total_count: 0};

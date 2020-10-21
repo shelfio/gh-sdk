@@ -1,4 +1,4 @@
-import {Octokit} from '@octokit/rest';
+import {PullsCreateResponseData} from '@octokit/types';
 import {getClient} from '../rest-client';
 
 export async function createReleasePR({
@@ -11,7 +11,7 @@ export async function createReleasePR({
   repo: string;
   version: string;
   releaseTitle: string;
-}): Promise<Octokit.PullsCreateResponse> {
+}): Promise<PullsCreateResponseData> {
   const gh = getClient();
   const tagName = `v${version}`;
   const branch = `release/${tagName}`;
