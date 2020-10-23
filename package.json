@@ -1,6 +1,6 @@
 {
   "name": "@shelf/gh-sdk",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "Convenient wrapper for GitHub API for automation tasks",
   "license": "MIT",
   "author": {
