@@ -16,6 +16,7 @@ const {approvePR, mergePR, listOpenPRs, getUserOrgs, ...} = require('@shelf/gh-s
 getUserOrgs();
 listOrgRepos('shelf');                                      // => [, {repo}]
 approvePR({owner: 'shelf', repo: 'api', pr: 3});
+getPR({owner: 'shelf', repo: 'api', pr: 3});
 mergePR({owner: 'shelf', repo: 'api', pr: 3});
 listOpenPRs({owner: 'shelf', searchText: 'renovate'});
 getRepoBranch({owner: 'shelf', repo: 'api', branch: 'dev'});
