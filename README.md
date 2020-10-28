@@ -28,6 +28,9 @@ createReleasePR({owner:'shelf', repo: 'api', version: '1.2.3', releaseTitle: 'Go
 getLatestBranchCommit({owner: 'shelf', repo: 'api', branch: 'dev'});
 getLatestDevelopCommit({owner: 'shelf', repo: 'api'})      //{branch: 'develop} as default
 getLatestDevelopCommitSHA({owner: 'shelf', repo: 'api'})   // => 'develop-branch-hash-string'
+getRepoLabels('shelf', 'api');
+createReleaseLabel('shelf', 'api');
+assignReleaseLabelToPR('shelf', 'api', 134);
 ```
 
 ## Publish
