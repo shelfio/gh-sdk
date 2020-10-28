@@ -17,6 +17,7 @@ export {
   getLatestDevelopCommit,
   getLatestDevelopCommitSHA
 } from './repos/get-latest-branch-commit';
+export {getRepoLabels, createReleaseLabel, assignReleaseLabelToPR} from './repos/labels';
 
 interface ApprovePRParams {
   owner: string;
