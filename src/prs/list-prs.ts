@@ -1,12 +1,26 @@
 import {SearchIssuesAndPullRequestsResponseData} from '@octokit/types';
 import {getClient} from '../rest-client';
 
-interface ListPRsParams {
+interface ListOpenPRsParams {
   owner: string;
   searchText?: string;
 }
 
-export async function listOpenPRs(
+interface ListPRsParams {
+  owner: string;
+  searchText?: string;
+  prStatus: 'open' | 'closed';
+}
+
+export async function listPrs(params: ListOpenPRsParams): ReturnType<typeof listPRs> {
+  return listPRs({...params, prStatus: 'open'});
+}
+
+export async function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof listPRs> {
+  return listPRs({...params, prStatus: 'closed'});
+}
+
+async function listPRs(
   params: ListPRsParams
 ): Promise<SearchIssuesAndPullRequestsResponseData['items']> {
   const prs: unknown[] = [];
@@ -16,7 +30,9 @@ export async function listOpenPRs(
   do {
     const data = await search({
       page,
-      q: `is:open is:pr archived:false user:${params.owner} ${params.searchText || ''}`.trim()
+      q: `is:${params.prStatus} is:pr archived:false user:${params.owner} ${
+        params.searchText || ''
+      }`.trim()
     });
 
     totalCount = data.total_count;

@@ -5,7 +5,7 @@ import {
 } from '@octokit/types/dist-types/generated/Endpoints';
 import {getClient} from './rest-client';
 
-export {listOpenPRs} from './prs/list-open-prs';
+export {listPrs, listClosedPRs} from './prs/list-prs';
 export {listOrgRepos} from './repos/list-org-repos';
 export {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './repos/get-repo-branches';
 export {deleteBranch} from './repos/delete-branch';

@@ -11,14 +11,15 @@ $ yarn add @shelf/gh-sdk
 ## Usage
 
 ```js
-const {approvePR, mergePR, listOpenPRs, getUserOrgs, ...} = require('@shelf/gh-sdk');
+const {approvePR, mergePR, listPrs, getUserOrgs, ...} = require('@shelf/gh-sdk');
 
 getUserOrgs();
 listOrgRepos('shelf');                                      // => [, {repo}]
 approvePR({owner: 'shelf', repo: 'api', pr: 3});
 getPR({owner: 'shelf', repo: 'api', pr: 3});
 mergePR({owner: 'shelf', repo: 'api', pr: 3});
-listOpenPRs({owner: 'shelf', searchText: 'renovate'});
+listPrs({owner: 'shelf', searchText: 'renovate'});
+listClosedPRs({owner: 'shelf', searchText: 'renovate'});
 getRepoBranch({owner: 'shelf', repo: 'api', branch: 'dev'});
 getRepoBranches({owner: 'shelf', repo: 'api'});            // => [, {branch}]
 getRepoBranchesNames({owner: 'shelf', repo: 'api'});       // => [, 'branch-ref']

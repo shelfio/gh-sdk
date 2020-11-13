@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
 import {getClient} from '../rest-client';
-import {listOpenPRs} from './list-open-prs';
+import {listPrs} from './list-prs';
 
 const issuesAndPullRequestsMock = jest
   .fn()
@@ -14,7 +14,7 @@ const issuesAndPullRequestsMock = jest
 });
 
 it('should call sdk w/ proper params for 2 pages', async () => {
-  await listOpenPRs({owner: 'shelf', searchText: 'hello'});
+  await listPrs({owner: 'shelf', searchText: 'hello'});
 
   expect(issuesAndPullRequestsMock).toHaveBeenCalledWith({
     page: 1,
@@ -29,7 +29,7 @@ it('should call sdk w/ proper params for 2 pages', async () => {
 });
 
 it('should return 2 open prs', async () => {
-  const prs = await listOpenPRs({owner: 'shelf', searchText: 'hello'});
+  const prs = await listPrs({owner: 'shelf', searchText: 'hello'});
 
   expect(prs).toEqual([{a: 1}, {a: 1}]);
 });
