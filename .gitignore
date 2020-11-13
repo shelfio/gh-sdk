@@ -7,7 +7,9 @@ node_modules/
 *.log
 junit.xml
 draft.js
+draft.ts
 *.draft.js
+*.draft.ts
 yarn.lock
 
 .env
