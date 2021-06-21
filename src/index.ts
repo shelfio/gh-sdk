@@ -1,20 +1,8 @@
 import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from './rest-client';
 
-export {listPrs, listClosedPRs} from './prs/list-prs';
-export {listOrgRepos} from './repos/list-org-repos';
-export {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './repos/get-repo-branches';
-export {deleteBranch} from './repos/delete-branch';
-export {createReleasePR} from './prs/create-release-pr';
-export {getPR} from './prs/get-pr';
-export {extractRepoNameFromURL} from './prs/parse-repo-url';
-export {createReleaseBranch} from './repos/create-release-branch';
-export {
-  getLatestBranchCommit,
-  getLatestDevelopCommit,
-  getLatestDevelopCommitSHA,
-} from './repos/get-latest-branch-commit';
-export {getRepoLabels, createReleaseLabel, assignReleaseLabelToPR} from './repos/labels';
+export * from './prs';
+export * from './repos';
 
 interface ApprovePRParams {
   owner: string;
