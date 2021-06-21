@@ -32,6 +32,7 @@ getLatestDevelopCommitSHA({owner: 'shelf', repo: 'api'})   // => 'develop-branch
 getRepoLabels('shelf', 'api');
 createReleaseLabel('shelf', 'api');
 assignReleaseLabelToPR('shelf', 'api', 134);
+extractRepoNameFromURL('https://github.com/shelfio/gh-sdk/pulls/5'); // => gh-sdk
 ```
 
 ## Publish
