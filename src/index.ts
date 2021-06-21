@@ -7,6 +7,7 @@ export {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './repos/get-
 export {deleteBranch} from './repos/delete-branch';
 export {createReleasePR} from './prs/create-release-pr';
 export {getPR} from './prs/get-pr';
+export {extractRepoNameFromURL} from './prs/parse-repo-url';
 export {createReleaseBranch} from './repos/create-release-branch';
 export {
   getLatestBranchCommit,
