@@ -17,7 +17,7 @@ export async function createReleaseLabel(owner: string, repo: string): Promise<v
   try {
     await client.issues.createLabel({owner, repo, name: 'release', color: 'ff0000'});
   } catch (error) {
-    if (error.errors.some(e => e.code === 'already_exists')) {
+    if (error.errors.some((e: any) => e.code === 'already_exists')) {
       return;
     }
 

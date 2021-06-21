@@ -1,30 +1,9 @@
-import {get} from 'lodash';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getRepoBranch} from './get-repo-branches';
 
-type LatestBranchCommit = {
-  author: {
-    avatar_url: string;
-    gravatar_id: string;
-    id: number;
-    login: string;
-    url: string;
-  };
-  committer: {
-    avatar_url: string;
-    gravatar_id: string;
-    id: number;
-    login: string;
-    url: string;
-  };
-  parents: Array<{
-    sha: string;
-    url: string;
-  }>;
-  node_id: string;
-  sha: string;
-  url: string;
-  commit?: Record<string, unknown>;
-};
+type LatestBranchCommit =
+  | RestEndpointMethodTypes['repos']['getBranch']['response']['data']['commit']
+  | undefined;
 
 export async function getLatestBranchCommit({
   owner,
@@ -37,7 +16,7 @@ export async function getLatestBranchCommit({
     branch,
   });
 
-  return get(branchResponse, 'commit', '');
+  return branchResponse?.commit;
 }
 
 export async function getLatestDevelopCommit({
@@ -63,5 +42,5 @@ export async function getLatestDevelopCommitSHA({
 }): Promise<string> {
   const commit = await getLatestDevelopCommit({owner, repo});
 
-  return get(commit, 'sha', '');
+  return commit?.sha || '';
 }

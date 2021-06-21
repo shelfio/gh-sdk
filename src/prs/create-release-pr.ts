@@ -1,4 +1,4 @@
-import {PullsCreateResponseData} from '@octokit/types';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods/dist-types/generated/parameters-and-response-types';
 import {getClient} from '../rest-client';
 
 export async function createReleasePR({
@@ -11,7 +11,7 @@ export async function createReleasePR({
   repo: string;
   version: string;
   releaseTitle: string;
-}): Promise<PullsCreateResponseData> {
+}): Promise<RestEndpointMethodTypes['pulls']['create']['response']['data']> {
   const gh = getClient();
   const tagName = `v${version}`;
   const branch = `release/${tagName}`;

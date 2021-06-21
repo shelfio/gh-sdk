@@ -1,11 +1,13 @@
-import {ReposListForOrgResponseData} from '@octokit/types';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
-export async function listOrgRepos(org: string): Promise<ReposListForOrgResponseData> {
+export async function listOrgRepos(
+  org: string
+): Promise<RestEndpointMethodTypes['repos']['listForOrg']['response']['data']> {
   let page = 1;
   let hasMore = false;
 
-  const repos: ReposListForOrgResponseData = [];
+  const repos: RestEndpointMethodTypes['repos']['listForOrg']['response']['data'] = [];
 
   do {
     const data = await list(org, page);
@@ -19,7 +21,10 @@ export async function listOrgRepos(org: string): Promise<ReposListForOrgResponse
   return repos;
 }
 
-async function list(org: string, page: number): Promise<ReposListForOrgResponseData> {
+async function list(
+  org: string,
+  page: number
+): Promise<RestEndpointMethodTypes['repos']['listForOrg']['response']['data']> {
   const gh = getClient();
   const {data} = await gh.repos.listForOrg({
     org,

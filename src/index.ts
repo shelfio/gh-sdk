@@ -1,8 +1,4 @@
-import {PullsCreateReviewResponseData, PullsMergeResponseData} from '@octokit/types';
-import {
-  PullsMergeResponse405Data,
-  PullsMergeResponse409Data,
-} from '@octokit/types/dist-types/generated/Endpoints';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from './rest-client';
 
 export {listPrs, listClosedPRs} from './prs/list-prs';
@@ -25,7 +21,9 @@ interface ApprovePRParams {
   pr: number;
 }
 
-export async function approvePR(params: ApprovePRParams): Promise<PullsCreateReviewResponseData> {
+export async function approvePR(
+  params: ApprovePRParams
+): Promise<RestEndpointMethodTypes['pulls']['createReview']['response']['data']> {
   const gh = getClient();
 
   const {data} = await gh.pulls.createReview({
@@ -40,7 +38,7 @@ export async function approvePR(params: ApprovePRParams): Promise<PullsCreateRev
 
 export async function mergePR(
   params: ApprovePRParams
-): Promise<PullsMergeResponseData | PullsMergeResponse405Data | PullsMergeResponse409Data> {
+): Promise<RestEndpointMethodTypes['pulls']['merge']['response']['data']> {
   const gh = getClient();
 
   const {data} = await gh.pulls.merge({

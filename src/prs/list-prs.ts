@@ -1,4 +1,4 @@
-import {SearchIssuesAndPullRequestsResponseData} from '@octokit/types';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
 interface ListOpenPRsParams {
@@ -20,9 +20,12 @@ export async function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeo
   return listPRs({...params, prStatus: 'closed'});
 }
 
+// TODO: Refactor to use https://github.com/holvonix-open/paginate-generator
 async function listPRs(
   params: ListPRsParams
-): Promise<SearchIssuesAndPullRequestsResponseData['items']> {
+): Promise<
+  RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items']
+> {
   const prs: unknown[] = [];
   let page = 1;
   let totalCount = 0;
@@ -41,7 +44,7 @@ async function listPRs(
     page++;
   } while (prs.length < totalCount);
 
-  return prs as SearchIssuesAndPullRequestsResponseData['items'];
+  return prs as RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'];
 }
 
 async function search({
@@ -50,7 +53,7 @@ async function search({
 }: {
   q: string;
   page: number;
-}): Promise<SearchIssuesAndPullRequestsResponseData> {
+}): Promise<RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']> {
   // Because HttpError: Only the first 1000 search results are available
   if (page >= 11) {
     return {incomplete_results: false, items: [], total_count: 0};

@@ -1,4 +1,4 @@
-import {GitCreateRefResponseData} from '@octokit/types';
+import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
 export async function createReleaseBranch({
@@ -11,7 +11,7 @@ export async function createReleaseBranch({
   repo: string;
   version: string;
   sha: string;
-}): Promise<GitCreateRefResponseData> {
+}): Promise<RestEndpointMethodTypes['git']['createRef']['response']['data']> {
   const gh = getClient();
   const branchName = `refs/heads/release/v${version}`;
 

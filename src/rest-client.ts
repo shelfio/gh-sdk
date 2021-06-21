@@ -1,6 +1,6 @@
 import {Octokit} from '@octokit/rest';
 
-let client;
+let client: Octokit;
 
 export function getClient(): Octokit {
   if (client) {
