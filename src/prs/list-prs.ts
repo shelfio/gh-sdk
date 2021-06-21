@@ -1,4 +1,5 @@
 import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
+import {all, paginate} from 'paginate-generator';
 import {getClient} from '../rest-client';
 
 interface ListOpenPRsParams {
@@ -20,52 +21,35 @@ export async function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeo
   return listPRs({...params, prStatus: 'closed'});
 }
 
-// TODO: Refactor to use https://github.com/holvonix-open/paginate-generator
 async function listPRs(
   params: ListPRsParams
 ): Promise<
   RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items']
 > {
-  const prs: unknown[] = [];
-  let page = 1;
-  let totalCount = 0;
+  const prs: unknown[] = await all(
+    paginate(async (token?: number) => {
+      if ((token || 1) >= 11) {
+        return {
+          page: [],
+        };
+      }
 
-  do {
-    const data = await search({
-      page,
-      q: `is:${params.prStatus} is:pr archived:false user:${params.owner} ${
-        params.searchText || ''
-      }`.trim(),
-    });
+      const gh = getClient();
 
-    totalCount = data.total_count;
-    prs.push(...data.items);
+      const {data} = await gh.search.issuesAndPullRequests({
+        per_page: 100,
+        page: token || 1,
+        q: `is:${params.prStatus} is:pr archived:false user:${params.owner} ${
+          params.searchText || ''
+        }`,
+      });
 
-    page++;
-  } while (prs.length < totalCount);
+      return {
+        next: data.items.length >= 100 ? (token || 1) + 1 : undefined,
+        page: data.items,
+      };
+    })
+  );
 
   return prs as RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'];
-}
-
-async function search({
-  q,
-  page,
-}: {
-  q: string;
-  page: number;
-}): Promise<RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']> {
-  // Because HttpError: Only the first 1000 search results are available
-  if (page >= 11) {
-    return {incomplete_results: false, items: [], total_count: 0};
-  }
-
-  const gh = getClient();
-
-  const {data} = await gh.search.issuesAndPullRequests({
-    per_page: 100,
-    page,
-    q,
-  });
-
-  return data;
 }
