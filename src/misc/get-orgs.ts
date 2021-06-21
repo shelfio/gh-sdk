@@ -2,8 +2,11 @@ import {getClient} from '../rest-client';
 
 export async function getUserOrgs(): Promise<string[]> {
   const gh = getClient();
-  const {data} = await gh.orgs.listForAuthenticatedUser();
-  const orgNames = data.map(item => item.login);
+  const [{data: orgsData}, {data: currentUserData}] = await Promise.all([
+    gh.orgs.listForAuthenticatedUser(),
+    gh.users.getAuthenticated(),
+  ]);
+  const orgNames = orgsData.map(item => item.login);
 
-  return orgNames.sort();
+  return [...orgNames, currentUserData.login].sort();
 }
