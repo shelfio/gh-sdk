@@ -27,7 +27,7 @@ async function list(org: string, page: number): Promise<ReposListForOrgResponseD
     sort: 'pushed',
     per_page: 100,
     page,
-    direction: 'desc'
+    direction: 'desc',
   });
 
   return data;

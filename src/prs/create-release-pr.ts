@@ -5,7 +5,7 @@ export async function createReleasePR({
   owner,
   repo,
   version,
-  releaseTitle
+  releaseTitle,
 }: {
   owner: string;
   repo: string;
@@ -21,7 +21,7 @@ export async function createReleasePR({
     repo,
     head: branch,
     base: 'master',
-    title: `Release ${tagName}: ${releaseTitle}`
+    title: `Release ${tagName}: ${releaseTitle}`,
   });
 
   return data;

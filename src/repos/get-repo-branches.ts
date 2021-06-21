@@ -6,15 +6,13 @@ import {getClient} from '../rest-client';
 export async function getRepoBranch({
   owner,
   repo,
-  branch
-}: RestEndpointMethodTypes['repos']['getBranch']['parameters']): Promise<
-  ReposGetBranchResponseData
-> {
+  branch,
+}: RestEndpointMethodTypes['repos']['getBranch']['parameters']): Promise<ReposGetBranchResponseData> {
   const gh = getClient();
   const branchResponse = await gh.repos.getBranch({
     owner,
     repo,
-    branch
+    branch,
   });
 
   return branchResponse.data;
@@ -22,16 +20,14 @@ export async function getRepoBranch({
 
 export async function getRepoBranches({
   owner,
-  repo
-}: RestEndpointMethodTypes['repos']['listBranches']['parameters']): Promise<
-  ReposListBranchesResponseData
-> {
+  repo,
+}: RestEndpointMethodTypes['repos']['listBranches']['parameters']): Promise<ReposListBranchesResponseData> {
   const gh = getClient();
 
   const branchesResponse = await gh.repos.listBranches({
     owner,
     repo,
-    per_page: 100
+    per_page: 100,
   });
 
   return branchesResponse.data;
@@ -39,7 +35,7 @@ export async function getRepoBranches({
 
 export async function getRepoBranchesNames({
   owner,
-  repo
+  repo,
 }: {
   owner: string;
   repo: string;

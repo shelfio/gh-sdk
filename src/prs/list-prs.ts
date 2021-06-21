@@ -32,7 +32,7 @@ async function listPRs(
       page,
       q: `is:${params.prStatus} is:pr archived:false user:${params.owner} ${
         params.searchText || ''
-      }`.trim()
+      }`.trim(),
     });
 
     totalCount = data.total_count;
@@ -46,7 +46,7 @@ async function listPRs(
 
 async function search({
   q,
-  page
+  page,
 }: {
   q: string;
   page: number;
@@ -61,7 +61,7 @@ async function search({
   const {data} = await gh.search.issuesAndPullRequests({
     per_page: 100,
     page,
-    q
+    q,
   });
 
   return data;

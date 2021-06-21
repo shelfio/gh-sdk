@@ -1,7 +1,7 @@
 import {PullsCreateReviewResponseData, PullsMergeResponseData} from '@octokit/types';
 import {
   PullsMergeResponse405Data,
-  PullsMergeResponse409Data
+  PullsMergeResponse409Data,
 } from '@octokit/types/dist-types/generated/Endpoints';
 import {getClient} from './rest-client';
 
@@ -15,7 +15,7 @@ export {createReleaseBranch} from './repos/create-release-branch';
 export {
   getLatestBranchCommit,
   getLatestDevelopCommit,
-  getLatestDevelopCommitSHA
+  getLatestDevelopCommitSHA,
 } from './repos/get-latest-branch-commit';
 export {getRepoLabels, createReleaseLabel, assignReleaseLabelToPR} from './repos/labels';
 
@@ -32,7 +32,7 @@ export async function approvePR(params: ApprovePRParams): Promise<PullsCreateRev
     owner: params.owner,
     repo: params.repo,
     event: 'APPROVE',
-    pull_number: params.pr
+    pull_number: params.pr,
   });
 
   return data;
@@ -47,7 +47,7 @@ export async function mergePR(
     repo: params.repo,
     pull_number: params.pr,
     owner: params.owner,
-    merge_method: 'merge'
+    merge_method: 'merge',
   });
 
   return data;

@@ -4,7 +4,7 @@ import {getClient} from '../rest-client';
 export async function getPR({
   repo,
   owner,
-  pr
+  pr,
 }: {
   repo: string;
   owner: string;

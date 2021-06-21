@@ -3,7 +3,7 @@ jest.mock('../rest-client');
 import {
   getLatestBranchCommit,
   getLatestDevelopCommit,
-  getLatestDevelopCommitSHA
+  getLatestDevelopCommitSHA,
 } from './get-latest-branch-commit';
 import {getClient} from '../rest-client';
 
@@ -13,12 +13,12 @@ const commit = {
   parents: [
     {
       sha: 'some-parent-hash',
-      url: 'some-parent-url'
-    }
+      url: 'some-parent-url',
+    },
   ],
   node_id: 'some-node-id',
   sha: 'some-commit-hash',
-  url: 'some-commit-url'
+  url: 'some-commit-url',
 };
 
 const branchResponse = {
@@ -26,17 +26,17 @@ const branchResponse = {
   name: 'some-branch-name',
   protected: false,
   protection: {enabled: false},
-  protection_url: 'some-protection-url'
+  protection_url: 'some-protection-url',
 };
 
 const branchMock = jest.fn().mockResolvedValue({
-  data: branchResponse
+  data: branchResponse,
 });
 
 (getClient as jest.Mock).mockReturnValue({
   repos: {
-    getBranch: branchMock
-  }
+    getBranch: branchMock,
+  },
 });
 
 beforeAll(() => {

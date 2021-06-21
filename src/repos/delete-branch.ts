@@ -5,7 +5,7 @@ import {getClient} from '../rest-client';
 export async function deleteBranch({
   owner,
   repo,
-  ref
+  ref,
 }: RestEndpointMethodTypes['git']['deleteRef']['parameters']): Promise<OctokitResponse<any>> {
   const gh = getClient();
 

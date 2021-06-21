@@ -5,27 +5,27 @@ import {getClient} from '../rest-client';
 
 const branchOne = {
   _links: {html: 'some-html'},
-  name: 'some-branch-name-one'
+  name: 'some-branch-name-one',
 };
 
 const branchOTwo = {
   _links: {html: 'some-html'},
-  name: 'some-branch-name-two'
+  name: 'some-branch-name-two',
 };
 
 const branchMock = jest.fn().mockResolvedValue({
-  data: branchOne
+  data: branchOne,
 });
 
 const branchesMock = jest.fn().mockResolvedValue({
-  data: [branchOne, branchOTwo]
+  data: [branchOne, branchOTwo],
 });
 
 (getClient as jest.Mock).mockReturnValue({
   repos: {
     getBranch: branchMock,
-    listBranches: branchesMock
-  }
+    listBranches: branchesMock,
+  },
 });
 
 const owner = 'some-onwer-name';

@@ -5,7 +5,7 @@ export async function getRepoLabels(owner: string, repo: string): Promise<string
 
   const {data} = await client.issues.listLabelsForRepo({
     owner,
-    repo
+    repo,
   });
 
   return data.map(l => l.name);
@@ -36,6 +36,6 @@ export async function assignReleaseLabelToPR(
     owner,
     repo,
     issue_number: pull_number,
-    labels: ['release']
+    labels: ['release'],
   });
 }

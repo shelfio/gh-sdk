@@ -4,13 +4,13 @@ import {getClient} from '../rest-client';
 import {listOrgRepos} from './list-org-repos';
 
 const listForOrgMock = jest.fn().mockResolvedValue({
-  data: [{a: 1}]
+  data: [{a: 1}],
 });
 
 (getClient as jest.Mock).mockReturnValue({
   repos: {
-    listForOrg: listForOrgMock
-  }
+    listForOrg: listForOrgMock,
+  },
 });
 
 it('should call sdk w/ proper params', async () => {
@@ -22,7 +22,7 @@ it('should call sdk w/ proper params', async () => {
     page: 1,
     per_page: 100,
     sort: 'pushed',
-    type: 'all'
+    type: 'all',
   });
 });
 

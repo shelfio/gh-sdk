@@ -29,12 +29,12 @@ type LatestBranchCommit = {
 export async function getLatestBranchCommit({
   owner,
   repo,
-  branch
+  branch,
 }: Parameters<typeof getRepoBranch>[0]): Promise<LatestBranchCommit> {
   const branchResponse = await getRepoBranch({
     owner,
     repo,
-    branch
+    branch,
   });
 
   return get(branchResponse, 'commit', '');
@@ -42,7 +42,7 @@ export async function getLatestBranchCommit({
 
 export async function getLatestDevelopCommit({
   owner,
-  repo
+  repo,
 }: {
   owner: string;
   repo: string;
@@ -50,13 +50,13 @@ export async function getLatestDevelopCommit({
   return getLatestBranchCommit({
     owner,
     repo,
-    branch: 'develop'
+    branch: 'develop',
   });
 }
 
 export async function getLatestDevelopCommitSHA({
   owner,
-  repo
+  repo,
 }: {
   owner: string;
   repo: string;

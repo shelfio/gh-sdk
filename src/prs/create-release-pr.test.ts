@@ -15,17 +15,17 @@ const createPRResponse = {
   diff_url: 'some-diff-url',
   title: `Release v${version}: ${releaseTitle}`,
   url: 'some-pr-url',
-  user: {id: 'some-user-id', url: 'some-user-url'}
+  user: {id: 'some-user-id', url: 'some-user-url'},
 };
 
 const createPRResponseMock = jest.fn().mockResolvedValue({
-  data: createPRResponse
+  data: createPRResponse,
 });
 
 (getClient as jest.Mock).mockReturnValue({
   pulls: {
-    create: createPRResponseMock
-  }
+    create: createPRResponseMock,
+  },
 });
 
 it('pulls.create should be call with correct parameters', async () => {
@@ -36,7 +36,7 @@ it('pulls.create should be call with correct parameters', async () => {
     repo,
     head: `release/v${version}`,
     base: 'master',
-    title: `Release v${version}: ${releaseTitle}`
+    title: `Release v${version}: ${releaseTitle}`,
   });
 });
 

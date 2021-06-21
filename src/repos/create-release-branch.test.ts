@@ -13,20 +13,20 @@ const releaseBranch = {
   object: {
     sha: 'branch-hash',
     type: 'branch',
-    url: 'some-url'
+    url: 'some-url',
   },
   ref: `refs/heads/release/v${version}`,
-  url: 'some-url'
+  url: 'some-url',
 };
 
 const releaseBranchResponseMock = jest.fn().mockResolvedValue({
-  data: releaseBranch
+  data: releaseBranch,
 });
 
 (getClient as jest.Mock).mockReturnValue({
   git: {
-    createRef: releaseBranchResponseMock
-  }
+    createRef: releaseBranchResponseMock,
+  },
 });
 
 it('git.createRef should be called with correct parameters', async () => {
@@ -38,7 +38,7 @@ it('git.createRef should be called with correct parameters', async () => {
     owner,
     repo,
     sha,
-    ref: `refs/heads/release/v${version}`
+    ref: `refs/heads/release/v${version}`,
   });
 });
 

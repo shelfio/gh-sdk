@@ -9,8 +9,8 @@ const issuesAndPullRequestsMock = jest
 
 (getClient as jest.Mock).mockReturnValue({
   search: {
-    issuesAndPullRequests: issuesAndPullRequestsMock
-  }
+    issuesAndPullRequests: issuesAndPullRequestsMock,
+  },
 });
 
 it('should call sdk w/ proper params for 2 pages', async () => {
@@ -19,12 +19,12 @@ it('should call sdk w/ proper params for 2 pages', async () => {
   expect(issuesAndPullRequestsMock).toHaveBeenCalledWith({
     page: 1,
     per_page: 100,
-    q: 'is:open is:pr archived:false user:shelf hello'
+    q: 'is:open is:pr archived:false user:shelf hello',
   });
   expect(issuesAndPullRequestsMock).toHaveBeenCalledWith({
     page: 2,
     per_page: 100,
-    q: 'is:open is:pr archived:false user:shelf hello'
+    q: 'is:open is:pr archived:false user:shelf hello',
   });
 });
 

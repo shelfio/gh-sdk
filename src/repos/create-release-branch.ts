@@ -5,7 +5,7 @@ export async function createReleaseBranch({
   owner,
   repo,
   version,
-  sha
+  sha,
 }: {
   owner: string;
   repo: string;
@@ -19,7 +19,7 @@ export async function createReleaseBranch({
     owner,
     repo,
     ref: branchName,
-    sha
+    sha,
   });
 
   return data;

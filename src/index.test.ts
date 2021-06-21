@@ -12,11 +12,11 @@ const listForAuthenticatedUserMock = jest
 (getClient as jest.Mock).mockReturnValue({
   pulls: {
     createReview: createReviewMock,
-    merge: mergeMock
+    merge: mergeMock,
   },
   orgs: {
-    listForAuthenticatedUser: listForAuthenticatedUserMock
-  }
+    listForAuthenticatedUser: listForAuthenticatedUserMock,
+  },
 });
 
 describe('approvePR', () => {
@@ -27,7 +27,7 @@ describe('approvePR', () => {
       event: 'APPROVE',
       owner: 'shelfio',
       pull_number: 3,
-      repo: 'test'
+      repo: 'test',
     });
   });
 
@@ -46,7 +46,7 @@ describe('mergePR', () => {
       merge_method: 'merge',
       owner: 'shelfio',
       pull_number: 3,
-      repo: 'test'
+      repo: 'test',
     });
   });
 

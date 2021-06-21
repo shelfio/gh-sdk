@@ -8,7 +8,7 @@ export function getClient(): Octokit {
   }
 
   client = new Octokit({
-    auth: process.env.GITHUB_TOKEN
+    auth: process.env.GITHUB_TOKEN,
   });
 
   return client;
