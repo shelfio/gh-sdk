@@ -6,8 +6,6 @@ export async function getUserOrgs(): Promise<string[]> {
     gh.orgs.listForAuthenticatedUser(),
     gh.users.getAuthenticated(),
   ]);
-  console.log('orgsData', orgsData, 'currentUserData', currentUserData);
-
   const orgNames = orgsData.map(item => item.login);
 
   return [...orgNames, currentUserData.login].sort();
