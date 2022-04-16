@@ -15,15 +15,15 @@ export async function deleteBranch({
 
     return data;
   } catch (error) {
-    if(error.status === 422){
-      console.error(error.message, `(possibly branch auto-delete feature is enabled in the repo settings)`)
+    if (error.status === 422) {
+      console.error(
+        error.message,
+        `(possibly branch auto-delete feature is enabled in the repo settings)`
+      );
 
-      return
+      return;
     }
 
-    console.error(
-      `Error deleting branch`,
-      error
-    );
+    console.error(`Error deleting branch`, error);
   }
 }
