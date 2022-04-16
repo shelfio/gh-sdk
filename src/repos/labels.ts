@@ -28,14 +28,14 @@ export async function createReleaseLabel(owner: string, repo: string): Promise<v
 export async function assignReleaseLabelToPR(
   owner: string,
   repo: string,
-  pull_number: number
+  pullNumber: number
 ): Promise<void> {
   const client = getClient();
 
   await client.issues.addLabels({
     owner,
     repo,
-    issue_number: pull_number,
+    issue_number: pullNumber,
     labels: ['release'],
   });
 }
