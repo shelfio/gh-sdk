@@ -38,7 +38,6 @@ const prsGenerator = async function* (
         params.searchText || ''
       }`,
     });
-    console.log(`pagenumber: ${pageNumber} || items: ${data.items.length}`);
 
     if (data.items.length < 100) {
       hasNextPage = false;
@@ -55,11 +54,12 @@ async function getPRs(
 ): Promise<
   RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items']
 > {
-  const prs = [];
+  const prs: RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'] =
+    [];
 
   for await (const prsOnePage of prsGenerator(params)) {
     prs.push(...prsOnePage);
   }
 
-  return prs as RestEndpointMethodTypes['search']['issuesAndPullRequests']['response']['data']['items'];
+  return prs;
 }
