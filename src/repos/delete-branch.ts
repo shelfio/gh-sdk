@@ -14,7 +14,7 @@ export async function deleteBranch({
     const {data} = await gh.git.deleteRef({owner, repo, ref});
 
     return data;
-  } catch (error) {
+  } catch (error: any) {
     if (error.status === 422) {
       console.error(
         error.message,
