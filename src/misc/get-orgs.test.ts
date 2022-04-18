@@ -7,10 +7,11 @@ const listForAuthenticatedUserMock = jest
   .fn()
   .mockResolvedValue({data: [{login: 'hello'}, {login: 'world'}]});
 
+const getAuthenticatedMock = jest.fn().mockResolvedValue({data: {login: 'x-username', id: 12345}});
+
 (getClient as jest.Mock).mockReturnValue({
-  orgs: {
-    listForAuthenticatedUser: listForAuthenticatedUserMock,
-  },
+  orgs: {listForAuthenticatedUser: listForAuthenticatedUserMock},
+  users: {getAuthenticated: getAuthenticatedMock},
 });
 
 describe('getUserOrgs', () => {
@@ -23,6 +24,6 @@ describe('getUserOrgs', () => {
   it('should respond w/ sdk response', async () => {
     const resp = await getUserOrgs();
 
-    expect(resp).toEqual(['hello', 'world']);
+    expect(resp).toEqual(['hello', 'world', 'x-username']);
   });
 });

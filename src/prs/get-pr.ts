@@ -1,4 +1,4 @@
-import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
+import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
 export async function getPR({

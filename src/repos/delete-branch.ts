@@ -1,4 +1,4 @@
-import {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
+import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
 export async function deleteBranch({
@@ -14,10 +14,16 @@ export async function deleteBranch({
     const {data} = await gh.git.deleteRef({owner, repo, ref});
 
     return data;
-  } catch (error) {
-    console.error(
-      `Error deleting branch, possibly branch auto-delete feature is enabled in the repo settings`,
-      error
-    );
+  } catch (error: any) {
+    if (error.status === 422) {
+      console.error(
+        error.message,
+        `(possibly branch auto-delete feature is enabled in the repo settings)`
+      );
+
+      return;
+    }
+
+    console.error(`Error deleting branch`, error);
   }
 }
