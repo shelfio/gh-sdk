@@ -19,7 +19,7 @@ export async function getLatestBranchCommit({
   return branchResponse?.commit;
 }
 
-export async function getLatestDevelopCommit({
+export function getLatestDevelopCommit({
   owner,
   repo,
 }: {
