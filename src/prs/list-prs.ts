@@ -12,11 +12,11 @@ type ListPRsParams = {
   prStatus: 'open' | 'closed';
 };
 
-export async function listPrs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
+export function listPrs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'open'});
 }
 
-export async function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
+export function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'closed'});
 }
 
