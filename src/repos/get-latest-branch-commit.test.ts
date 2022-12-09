@@ -1,11 +1,11 @@
 jest.mock('../rest-client');
 
+import {getClient} from '../rest-client';
 import {
   getLatestBranchCommit,
   getLatestDevelopCommit,
   getLatestDevelopCommitSHA,
 } from './get-latest-branch-commit';
-import {getClient} from '../rest-client';
 
 const commit = {
   author: {id: 123, login: 'some-login-string', url: 'some-author-url'},
@@ -33,7 +33,7 @@ const branchMock = jest.fn().mockResolvedValue({
   data: branchResponse,
 });
 
-(getClient as jest.Mock).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   repos: {
     getBranch: branchMock,
   },

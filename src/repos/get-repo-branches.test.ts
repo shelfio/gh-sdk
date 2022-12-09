@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './get-repo-branches';
 import {getClient} from '../rest-client';
+import {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './get-repo-branches';
 
 const branchOne = {
   _links: {html: 'some-html'},
@@ -21,7 +21,7 @@ const branchesMock = jest.fn().mockResolvedValue({
   data: [branchOne, branchOTwo],
 });
 
-(getClient as jest.Mock).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   repos: {
     getBranch: branchMock,
     listBranches: branchesMock,

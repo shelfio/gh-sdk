@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {createReleasePR} from './create-release-pr';
 import {getClient} from '../rest-client';
+import {createReleasePR} from './create-release-pr';
 
 const owner = 'repo-owner-name';
 const repo = 'some-repo-name';
@@ -22,7 +22,7 @@ const createPRResponseMock = jest.fn().mockResolvedValue({
   data: createPRResponse,
 });
 
-(getClient as jest.Mock).mockReturnValue({
+jest.mocked(getClient).mockReturnValue({
   pulls: {
     create: createPRResponseMock,
   },

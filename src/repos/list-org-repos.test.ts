@@ -7,7 +7,7 @@ const listForOrgMock = jest.fn().mockResolvedValue({
   data: [{a: 1}],
 });
 
-(getClient as jest.Mock).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   repos: {
     listForOrg: listForOrgMock,
   },

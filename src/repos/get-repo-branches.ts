@@ -1,4 +1,3 @@
-import {map} from 'lodash';
 import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
 import {getClient} from '../rest-client';
 
@@ -45,5 +44,5 @@ export async function getRepoBranchesNames({
 }): Promise<string[]> {
   const branchesResponse = await getRepoBranches({owner, repo});
 
-  return map(branchesResponse, 'name');
+  return branchesResponse?.map(branch => branch?.name) ?? [];
 }

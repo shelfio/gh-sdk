@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {createReleaseBranch} from './create-release-branch';
 import {getClient} from '../rest-client';
+import {createReleaseBranch} from './create-release-branch';
 
 const owner = 'some-owner-name';
 const repo = 'some-repo-name';
@@ -23,7 +23,7 @@ const releaseBranchResponseMock = jest.fn().mockResolvedValue({
   data: releaseBranch,
 });
 
-(getClient as jest.Mock).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   git: {
     createRef: releaseBranchResponseMock,
   },
