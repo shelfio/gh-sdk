@@ -34,6 +34,13 @@ listClosedPRs({ owner: "shelf", searchText: "renovate" });
 listOrgRepos({ org: "shelfio", type: "sources", skipArchived: true }); // => [, {repo}]
 listPrs({ owner: "shelf", searchText: "renovate" });
 mergePR({ owner: "shelf", repo: "api", pr: 3 });
+updateRepoMergeStrategies({
+  owner: 'shelfio',
+  repo: 'api',
+  allowMergeCommits: false,
+  allowSquash: false,
+  allowRebase: true,
+});
 ```
 
 ## Publish
