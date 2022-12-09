@@ -11,28 +11,28 @@ $ yarn add @shelf/gh-sdk
 ## Usage
 
 ```js
-import {approvePR, mergePR, listPrs, getUserOrgs} from '@shelf/gh-sdk';
+import { approvePR, mergePR, listPrs, getUserOrgs } from "@shelf/gh-sdk";
 
-approvePR({owner: 'shelf', repo: 'api', pr: 3});
-assignReleaseLabelToPR('shelf', 'api', 134);
-createReleaseBranch({owner: 'shelf', repo: 'api', version: '1.2.3', sha: 'dev'}); // => ref 'refs/heads/release/v1.2.3` (refs/heads - for git link)
-createReleaseLabel('shelf', 'api');
-createReleasePR({owner: 'shelf', repo: 'api', version: '1.2.3', releaseTitle: 'Good stuff'}); // => ref: 'release/v1.2.3`, title: Release v1.2.3: Good stuff
-deleteBranch({owner: 'shelf', repo: 'api', ref: 'dev'});
-extractRepoNameFromURL('https://github.com/shelfio/gh-sdk/pulls/5'); // => gh-sdk
-getLatestBranchCommit({owner: 'shelf', repo: 'api', branch: 'dev'});
-getLatestDevelopCommit({owner: 'shelf', repo: 'api'}); // {branch: 'develop} as default
-getLatestDevelopCommitSHA({owner: 'shelf', repo: 'api'}); // => 'develop-branch-hash-string'
-getPR({owner: 'shelf', repo: 'api', pr: 3});
-getRepoBranch({owner: 'shelf', repo: 'api', branch: 'dev'});
-getRepoBranches({owner: 'shelf', repo: 'api'}); // => [, {branch}]
-getRepoBranchesNames({owner: 'shelf', repo: 'api'}); // => [, 'branch-ref']
-getRepoLabels('shelf', 'api');
+approvePR({ owner: "shelf", repo: "api", pr: 3 });
+assignReleaseLabelToPR("shelf", "api", 134);
+createReleaseBranch({ owner: "shelf", repo: "api", version: "1.2.3", sha: "dev" }); // => ref 'refs/heads/release/v1.2.3` (refs/heads - for git link)
+createReleaseLabel("shelf", "api");
+createReleasePR({ owner: "shelf", repo: "api", version: "1.2.3", releaseTitle: "Good stuff" }); // => ref: 'release/v1.2.3`, title: Release v1.2.3: Good stuff
+deleteBranch({ owner: "shelf", repo: "api", ref: "dev" });
+extractRepoNameFromURL("https://github.com/shelfio/gh-sdk/pulls/5"); // => gh-sdk
+getLatestBranchCommit({ owner: "shelf", repo: "api", branch: "dev" });
+getLatestDevelopCommit({ owner: "shelf", repo: "api" }); // {branch: 'develop} as default
+getLatestDevelopCommitSHA({ owner: "shelf", repo: "api" }); // => 'develop-branch-hash-string'
+getPR({ owner: "shelf", repo: "api", pr: 3 });
+getRepoBranch({ owner: "shelf", repo: "api", branch: "dev" });
+getRepoBranches({ owner: "shelf", repo: "api" }); // => [, {branch}]
+getRepoBranchesNames({ owner: "shelf", repo: "api" }); // => [, 'branch-ref']
+getRepoLabels("shelf", "api");
 getUserOrgs();
-listClosedPRs({owner: 'shelf', searchText: 'renovate'});
-listOrgRepos('shelf'); // => [, {repo}]
-listPrs({owner: 'shelf', searchText: 'renovate'});
-mergePR({owner: 'shelf', repo: 'api', pr: 3});
+listClosedPRs({ owner: "shelf", searchText: "renovate" });
+listOrgRepos({ org: "shelfio", type: "sources", skipArchived: true }); // => [, {repo}]
+listPrs({ owner: "shelf", searchText: "renovate" });
+mergePR({ owner: "shelf", repo: "api", pr: 3 });
 ```
 
 ## Publish

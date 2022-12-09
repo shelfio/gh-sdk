@@ -3,10 +3,16 @@ import {getClient} from '../rest-client';
 
 type RepoType = RestEndpointMethodTypes['repos']['listForOrg']['parameters']['type'];
 
+type ListOrgReposParams = {
+  org: string;
+  type?: RepoType;
+  skipArchived?: boolean;
+};
+
 export async function listOrgRepos(
-  org: string,
-  type: RepoType = 'all'
+  params: ListOrgReposParams
 ): Promise<RestEndpointMethodTypes['repos']['listForOrg']['response']['data']> {
+  const {org, type = 'all', skipArchived = false} = params;
   let page = 1;
   let hasMore = false;
 
@@ -21,7 +27,15 @@ export async function listOrgRepos(
     repos.push(...data);
   } while (hasMore);
 
-  return repos;
+  return repos.filter(repo => {
+    if (skipArchived) {
+      if (repo.archived) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 }
 
 async function list(
