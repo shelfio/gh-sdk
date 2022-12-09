@@ -22,7 +22,7 @@ const createPRResponseMock = jest.fn().mockResolvedValue({
   data: createPRResponse,
 });
 
-jest.mocked(getClient).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   pulls: {
     create: createPRResponseMock,
   },

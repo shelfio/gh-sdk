@@ -5,7 +5,7 @@ import {mergePR} from './merge';
 
 const mergeMock = jest.fn().mockResolvedValue({data: {a: 1}});
 
-jest.mocked(getClient).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   pulls: {
     merge: mergeMock,
   },

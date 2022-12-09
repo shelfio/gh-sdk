@@ -5,7 +5,7 @@ import {approvePR} from './approve';
 
 const createReviewMock = jest.fn().mockResolvedValue({data: {a: 1}});
 
-jest.mocked(getClient).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   pulls: {
     createReview: createReviewMock,
   },

@@ -9,7 +9,7 @@ const listForAuthenticatedUserMock = jest
 
 const getAuthenticatedMock = jest.fn().mockResolvedValue({data: {login: 'x-username', id: 12345}});
 
-jest.mocked(getClient).mockReturnValue({
+jest.mocked<any>(getClient).mockReturnValue({
   orgs: {listForAuthenticatedUser: listForAuthenticatedUserMock},
   users: {getAuthenticated: getAuthenticatedMock},
 });

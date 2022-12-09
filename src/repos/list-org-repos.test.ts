@@ -14,7 +14,7 @@ jest.mocked<any>(getClient).mockReturnValue({
 });
 
 it('should call sdk w/ proper params', async () => {
-  await listOrgRepos('shelf');
+  await listOrgRepos({org: 'shelf'});
 
   expect(listForOrgMock).toHaveBeenCalledWith({
     direction: 'desc',
@@ -27,7 +27,7 @@ it('should call sdk w/ proper params', async () => {
 });
 
 it('should return 1 org repo', async () => {
-  const prs = await listOrgRepos('shelf');
+  const prs = await listOrgRepos({org: 'shelf'});
 
   expect(prs).toEqual([{a: 1}]);
 });
