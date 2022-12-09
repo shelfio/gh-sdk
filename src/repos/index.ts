@@ -4,3 +4,4 @@ export * from './get-latest-branch-commit';
 export * from './get-repo-branches';
 export * from './labels';
 export * from './list-org-repos';
+export * from './get-repo-merge-strategies';

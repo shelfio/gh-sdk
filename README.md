@@ -15,6 +15,7 @@ import { approvePR, mergePR, listPrs, getUserOrgs } from "@shelf/gh-sdk";
 
 approvePR({ owner: "shelf", repo: "api", pr: 3 });
 assignReleaseLabelToPR("shelf", "api", 134);
+getRepoMergeStrategies("shelf", "api");
 createReleaseBranch({ owner: "shelf", repo: "api", version: "1.2.3", sha: "dev" }); // => ref 'refs/heads/release/v1.2.3` (refs/heads - for git link)
 createReleaseLabel("shelf", "api");
 createReleasePR({ owner: "shelf", repo: "api", version: "1.2.3", releaseTitle: "Good stuff" }); // => ref: 'release/v1.2.3`, title: Release v1.2.3: Good stuff
