@@ -43,6 +43,23 @@ export async function getCommitChecks(
   return data;
 }
 
+export async function getPRCommitRefsWithMessages(owner: string, repo: string, prNumber: number) {
+  const gh = getClient();
+
+  const {data} = await gh.pulls.listCommits({
+    owner,
+    repo,
+    pull_number: prNumber,
+  });
+
+  return data.map(commit => {
+    return {
+      sha: commit.sha,
+      message: commit.commit.message,
+    };
+  });
+}
+
 export function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'closed'});
 }

@@ -43,6 +43,7 @@ updateRepoMergeStrategies({
 });
 getOpenRepoPRsFromHuman('shelf', 'repo');
 getCommitChecks('shelf', 'repo', 'sha');
+getPRCommitRefsWithMessages('shelf', 'repo', 3);
 ```
 
 ## Publish
