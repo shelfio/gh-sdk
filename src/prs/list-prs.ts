@@ -16,6 +16,18 @@ export function listPrs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'open'});
 }
 
+export async function getOpenRepoPRsFromHuman(owner: string, repo: string): Promise<any[]> {
+  const gh = getClient();
+
+  const {data} = await gh.pulls.list({
+    owner,
+    repo,
+    state: 'open',
+  });
+
+  return data.filter(pr => !pr?.user?.login.endsWith('[bot]') && !pr.draft);
+}
+
 export function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'closed'});
 }

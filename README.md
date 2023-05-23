@@ -41,6 +41,7 @@ updateRepoMergeStrategies({
   allowSquash: false,
   allowRebase: true,
 });
+getOpenRepoPRsFromHuman('shelf', 'repo');
 ```
 
 ## Publish
