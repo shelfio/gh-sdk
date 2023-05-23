@@ -28,6 +28,21 @@ export async function getOpenRepoPRsFromHuman(owner: string, repo: string): Prom
   return data.filter(pr => !pr?.user?.login.endsWith('[bot]') && !pr.draft);
 }
 
+export async function getCommitChecks(
+  owner: string,
+  repo: string,
+  commitRef: string
+): Promise<any[]> {
+  const gh = getClient();
+
+  const {data} = await gh.request({
+    method: 'GET',
+    url: `/repos/${owner}/${repo}/commits/${commitRef}/statuses`,
+  });
+
+  return data;
+}
+
 export function listClosedPRs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'closed'});
 }

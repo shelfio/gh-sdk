@@ -42,6 +42,7 @@ updateRepoMergeStrategies({
   allowRebase: true,
 });
 getOpenRepoPRsFromHuman('shelf', 'repo');
+getCommitChecks('shelf', 'repo', 'sha');
 ```
 
 ## Publish
