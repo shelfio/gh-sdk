@@ -47,7 +47,7 @@
     "lodash": "4.17.21"
   },
   "devDependencies": {
-    "@babel/cli": "7.19.3",
+    "@babel/cli": "7.22.9",
     "@babel/core": "7.22.9",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.26.0",
