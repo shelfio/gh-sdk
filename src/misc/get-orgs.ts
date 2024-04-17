@@ -1,4 +1,4 @@
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 
 export async function getUserOrgs(): Promise<string[]> {
   const gh = getClient();

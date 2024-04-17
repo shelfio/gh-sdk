@@ -1,7 +1,12 @@
 {
   "extends": "@shelf/tsconfig/backend",
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "declaration": true,
+    "noEmit": false,
+    "outDir": "lib",
+    "moduleResolution": "nodenext",
+    "module": "Node16"
   },
   "exclude": ["node_modules"],
   "include": ["src"]

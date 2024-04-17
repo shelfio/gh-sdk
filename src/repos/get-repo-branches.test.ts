@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './get-repo-branches';
+import {getClient} from '../rest-client.js';
+import {getRepoBranch, getRepoBranches, getRepoBranchesNames} from './get-repo-branches.js';
 
 const branchOne = {
   _links: {html: 'some-html'},

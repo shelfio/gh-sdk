@@ -1,1 +1,1 @@
-export * from './get-orgs';
+export * from './get-orgs.js';

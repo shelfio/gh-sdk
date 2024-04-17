@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 
 type UpdateRepoMergeStrategiesParams = {
   owner: string;

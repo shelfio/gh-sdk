@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 
 export async function getRepoMergeStrategies(owner: string, repo: string) {
   const gh = getClient();

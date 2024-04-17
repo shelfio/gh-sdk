@@ -1,6 +1,6 @@
 jest.mock('./delete-branch');
 
-import {deleteBranch} from './delete-branch';
+import {deleteBranch} from './delete-branch.js';
 
 it('deleteBranch should be called w/ correct arguments', async () => {
   const owner = 'some-repo-owner';
