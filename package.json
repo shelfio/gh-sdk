@@ -64,7 +64,7 @@
     "typescript": "5.1.6"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "publishConfig": {
     "access": "public"
