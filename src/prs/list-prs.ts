@@ -1,5 +1,5 @@
 import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 
 type ListOpenPRsParams = {
   owner: string;
@@ -16,7 +16,7 @@ export function listPrs(params: ListOpenPRsParams): ReturnType<typeof getPRs> {
   return getPRs({...params, prStatus: 'open'});
 }
 
-export async function getOpenRepoPRsFromHuman(owner: string, repo: string): Promise<any[]> {
+export async function getOpenRepoPRsFromHuman(owner: string, repo: string) {
   const gh = getClient();
 
   const {data} = await gh.pulls.list({
@@ -28,11 +28,7 @@ export async function getOpenRepoPRsFromHuman(owner: string, repo: string): Prom
   return data.filter(pr => !pr?.user?.login.endsWith('[bot]') && !pr.draft);
 }
 
-export async function getCommitChecks(
-  owner: string,
-  repo: string,
-  commitRef: string
-): Promise<any[]> {
+export async function getCommitChecks(owner: string, repo: string, commitRef: string) {
   const gh = getClient();
 
   const {data} = await gh.request({

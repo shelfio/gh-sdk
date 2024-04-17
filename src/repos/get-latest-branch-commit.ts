@@ -1,5 +1,5 @@
 import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
-import {getRepoBranch} from './get-repo-branches';
+import {getRepoBranch} from './get-repo-branches.js';
 
 type LatestBranchCommit =
   | RestEndpointMethodTypes['repos']['getBranch']['response']['data']['commit']

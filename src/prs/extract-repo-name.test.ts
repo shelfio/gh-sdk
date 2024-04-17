@@ -1,4 +1,4 @@
-import {extractRepoNameFromURL} from './extract-repo-name';
+import {extractRepoNameFromURL} from './extract-repo-name.js';
 
 it('should parse API repo url', () => {
   const repoName = extractRepoNameFromURL('https://api.github.com/repos/shelfio/gh-sdk');

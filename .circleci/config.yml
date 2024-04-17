@@ -6,7 +6,7 @@ orbs:
 parameters:
   node_version:
     type: string
-    default: '16.15.1'
+    default: '20.11.1'
 
 commands:
   install_deps:
@@ -14,8 +14,7 @@ commands:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - node/install-packages:
           pkg-manager: yarn
-          cache-version: v1-all
-          cache-only-lockfile: true
+          with-cache: false
           app-dir: ~/repo
           override-ci-command: yarn install --pure-lockfile --no-progress
 
@@ -29,5 +28,5 @@ jobs:
       - checkout
       - install_deps
       - run: yarn test
-      - run: yarn type-check
+      - run: yarn build
       - run: yarn lint:ci

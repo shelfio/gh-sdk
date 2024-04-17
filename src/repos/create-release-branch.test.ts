@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {createReleaseBranch} from './create-release-branch';
+import {getClient} from '../rest-client.js';
+import {createReleaseBranch} from './create-release-branch.js';
 
 const owner = 'some-owner-name';
 const repo = 'some-repo-name';

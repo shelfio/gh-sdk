@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {getUserOrgs} from './get-orgs';
+import {getClient} from '../rest-client.js';
+import {getUserOrgs} from './get-orgs.js';
 
 const listForAuthenticatedUserMock = jest
   .fn()

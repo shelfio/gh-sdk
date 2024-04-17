@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {approvePR} from './approve';
+import {getClient} from '../rest-client.js';
+import {approvePR} from './approve.js';
 
 const createReviewMock = jest.fn().mockResolvedValue({data: {a: 1}});
 

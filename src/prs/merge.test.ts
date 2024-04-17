@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {mergePR} from './merge';
+import {getClient} from '../rest-client.js';
+import {mergePR} from './merge.js';
 
 const mergeMock = jest.fn().mockResolvedValue({data: {a: 1}});
 

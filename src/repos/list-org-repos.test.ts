@@ -1,7 +1,7 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
-import {listOrgRepos} from './list-org-repos';
+import {getClient} from '../rest-client.js';
+import {listOrgRepos} from './list-org-repos.js';
 
 const listForOrgMock = jest.fn().mockResolvedValue({
   data: [{a: 1}],

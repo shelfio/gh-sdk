@@ -1,5 +1,5 @@
 import type {RestEndpointMethodTypes} from '@octokit/plugin-rest-endpoint-methods';
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 
 type RepoType = RestEndpointMethodTypes['repos']['listForOrg']['parameters']['type'];
 

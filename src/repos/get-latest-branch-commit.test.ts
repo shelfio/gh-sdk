@@ -1,11 +1,11 @@
 jest.mock('../rest-client');
 
-import {getClient} from '../rest-client';
+import {getClient} from '../rest-client.js';
 import {
   getLatestBranchCommit,
   getLatestDevelopCommit,
   getLatestDevelopCommitSHA,
-} from './get-latest-branch-commit';
+} from './get-latest-branch-commit.js';
 
 const commit = {
   author: {id: 123, login: 'some-login-string', url: 'some-author-url'},
