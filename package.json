@@ -39,7 +39,7 @@
     "@shelf/tsconfig": "0.1.0",
     "@swc/core": "1.4.14",
     "@swc/jest": "0.2.36",
-    "@types/jest": "29.5.12",
+    "@types/jest": "29.5.13",
     "@types/lodash": "4.17.7",
     "@types/node": "20.12.7",
     "eslint": "8.57.0",
