@@ -30,7 +30,7 @@
   },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
-    "@octokit/rest": "20.1.0",
+    "@octokit/rest": "20.1.2",
     "lodash": "4.17.21"
   },
   "devDependencies": {
