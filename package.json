@@ -24,10 +24,6 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
-  "lint-staged": {
-    "*.{html,json,md,yml}": "prettier --write",
-    "*.{js,ts}": "eslint --fix"
-  },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
     "@octokit/rest": "20.1.0",
