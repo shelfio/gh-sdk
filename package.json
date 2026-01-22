@@ -27,7 +27,7 @@
   "prettier": "@shelf/prettier-config",
   "dependencies": {
     "@octokit/rest": "20.1.0",
-    "lodash": "4.17.21"
+    "lodash": "4.17.23"
   },
   "devDependencies": {
     "@shelf/eslint-config": "4.2.1",
