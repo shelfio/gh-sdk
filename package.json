@@ -17,12 +17,12 @@
   "scripts": {
     "build": "rm -rf lib/ && tsc",
     "coverage": "jest --coverage",
-    "lint": "yarn lint:ci --fix",
+    "lint": "pnpm lint:ci --fix",
     "lint:ci": "eslint . --quiet",
-    "prepack": "yarn build",
+    "prepack": "pnpm build",
     "test": "jest src",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "pnpm type-check --watch"
   },
   "prettier": "@shelf/prettier-config",
   "dependencies": {
@@ -49,6 +49,7 @@
   "engines": {
     "node": ">=22"
   },
+  "packageManager": "pnpm@10.20.0",
   "publishConfig": {
     "access": "public"
   },
