@@ -5,7 +5,7 @@
 ## Install
 
 ```
-$ yarn add @shelf/gh-sdk
+$ pnpm add @shelf/gh-sdk
 ```
 
 ## Usage
@@ -50,8 +50,8 @@ getPRCommitRefsWithMessages('shelf', 'repo', 3);
 
 ```sh
 $ git checkout master
-$ yarn version
-$ yarn publish
+$ pnpm version
+$ pnpm publish
 $ git push origin master --tags
 ```
 
