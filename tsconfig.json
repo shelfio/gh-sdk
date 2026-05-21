@@ -6,7 +6,8 @@
     "noEmit": false,
     "outDir": "lib",
     "moduleResolution": "nodenext",
-    "module": "Node16"
+    "module": "Node16",
+    "types": ["node"]
   },
   "exclude": ["node_modules"],
   "include": ["src/index.ts"]
