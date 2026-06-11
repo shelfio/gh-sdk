@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@shelf/eslint-config": "4.2.1",
-    "@shelf/prettier-config": "1.0.0",
+    "@shelf/prettier-config": "1.1.1",
     "@shelf/tsconfig": "0.1.0",
     "@swc/core": "1.15.10",
     "@swc/jest": "0.2.39",
